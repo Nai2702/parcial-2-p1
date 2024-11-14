@@ -26,18 +26,18 @@ function hideMiniCarrito(){
 
 //Function de renderización
 
-// Função de renderização do mini-carrinho
+// Funcion de renderizado mini-carrito
 function renderMiniCarrito(){
-    // Limpa o mini-cart antes de ser renderizado
+    // Limpa o mini-carrito antes de ser renderizado
     miniContainer.innerHTML = "";
 
-    // Container para os itens do carrinho
+    // Container para os items del carrito
     const itemsContainer = document.createElement("div");
 
-    // Variável para armazenar o total
+    // variable para el total
     let total = 0;
 
-    // Loop pelos produtos no carrinho
+    // Loop para los produtos del carrito
     for (const productId in carrito) {
         const item = carrito[productId];
         total += item.price * item.cantidad;
@@ -46,23 +46,23 @@ function renderMiniCarrito(){
         const itemContainer = document.createElement("div");
         itemContainer.className = "mini-cart-item d-flex align-items-center";
 
-        // Imagem do produto
+        // Imagem del producto
         const itemImage = document.createElement("img");
         itemImage.src = item.image;  // Acessa a URL da imagem do JSON
         itemImage.alt = item.name;
         itemImage.className = "mini-cart-image img-thumbnail me-2"; // Adiciona classes Bootstrap
 
-        // Nome e quantidade do produto
+        // nombre y cant de produto
         const itemName = document.createElement("span");
         itemName.textContent = `${item.name} (x${item.cantidad})`;
         itemName.className = "mini-cart-name";
 
-        // Preço do item
+        // Precio del item
         const itemPrice = document.createElement("span");
         itemPrice.textContent = `U$ ${(item.price * item.cantidad).toFixed(2)}`;
         itemPrice.className = "mini-cart-price ms-auto";
 
-        // Adiciona a imagem, o nome e o preço ao itemContainer
+        // Adiciona a imagen, o nombree yo precio de itemContainer
         itemContainer.appendChild(itemImage);
         itemContainer.appendChild(itemName);
         itemContainer.appendChild(itemPrice);
@@ -74,7 +74,7 @@ function renderMiniCarrito(){
     // Adiciona o container de itens ao mini-cart
     miniContainer.appendChild(itemsContainer);
 
-    // Seção de subtotal
+    //  subtotal
     const totalContainer = document.createElement("div");
     totalContainer.className = "mini-cart-total d-flex justify-content-between align-items-center mt-3 text-dark";
     
@@ -87,13 +87,13 @@ function renderMiniCarrito(){
     totalContainer.appendChild(totalLabel);
     totalContainer.appendChild(totalAmount);
 
-    // Botão de checkout
+    // Boton de checkout
     const checkoutBtn = document.createElement("button");
     checkoutBtn.className = "btn btn-primary btn-sm w-100 mt-2";
     checkoutBtn.textContent = "Finalizar a compra";
     checkoutBtn.addEventListener("click", checkout);
 
-    // Adiciona o subtotal e o botão de checkout ao mini-cart
+    // Adiciona un subtotal e  boton de checkout a mini-cart
     miniContainer.appendChild(totalContainer);
     miniContainer.appendChild(checkoutBtn);
 }
