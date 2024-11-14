@@ -7,7 +7,7 @@ function openModal(productoID) {
     const modalContent = document.createElement("div");
     modalContent.classList.add("modal-content", "w-50", "px-3", "d-flex", "flex-col");
 
-    // Adiciona o conteúdo do modal
+    // Adiciona o contenido modal
     modalContent.innerHTML = `
         <div class="d-flex flex-column justify-content-between align-items-center w-100">
             <div class="d-flex flex-row justify-content-between align-items-center w-100">
@@ -35,11 +35,11 @@ function openModal(productoID) {
         
     `;
 
-    // Adiciona o modal ao fundo
+    // Adiciona o modal de fundo
     backgroundModal.appendChild(modalContent);
     document.body.appendChild(backgroundModal);
 
-    // Mostra o modal com a classe "show"
+    // Muestra un modal con a classe "show"
     setTimeout(() => backgroundModal.classList.add("show"), 10);
 
     // Fecha o modal ao clicar no botão de fechamento
@@ -70,7 +70,7 @@ function openModal(productoID) {
         });
 
 
-        // Cria una tabla de caracteristicas
+        // Crea una tabla de caracteristicas
         if (producto.features) {
             const caracteristicasTabla = document.createElement("table");
             caracteristicasTabla.classList.add("table", "table-striped", "text-white");
