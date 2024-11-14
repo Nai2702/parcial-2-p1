@@ -1,7 +1,7 @@
-// Variável para armazenar los productos en carrito
+// VVariable para agregar los productos al carrito
 let carrito = {};
 
-// Funcion para cargar el carrito del localStorange
+// Funcion para cargar el carrito del localStor
 function cargarCarritoDeLocalStorage() {
     const carritoGuardado = localStorage.getItem("carrito");
     if (carritoGuardado) {
@@ -95,7 +95,7 @@ function renderCartModal() {
             carritoContainer.appendChild(carritoItem);
         }
 
-        // Adiciona la cantidade total de itens y el valor total
+        // agregar la cantidad total de items y el valor total
         const totalContainer = document.createElement("div");
         totalContainer.className = "total-info d-flex justify-content-between mt-3";
         
@@ -138,17 +138,17 @@ function checkoutItem(productId) {
 
     // Verifica se ainda há estoque disponível
     if (carrito[productId].cantidad < producto.stock) {
-        carrito[productId].cantidad++;  // Aumenta a quantidade no carrinho
-        producto.stock--;  // Reduz o estoque do produto
+        carrito[productId].cantidad++;  // Aumenta a cantidad de productos en el carrito
+        producto.stock--;  // Reducir es stock de productos
     } else {
         alert("Estoque insuficiente!");
     }
 
-    guardarCarritoNoLocalStorage();  // Salva as mudanças no localStorage
+    guardarCarritoNoLocalStorage();  // Salva los cambios en no localStorage
     renderCartModal();  // Re-renderiza o modal para atualizar os valores
 }
 
-// Funcion para remover la cantidad de item
+// Funcion para remover la cantidad de items
 function removeFromCart(productId) {
     const item = carrito[productId];
     
@@ -164,7 +164,7 @@ function removeFromCart(productId) {
     renderCartModal();
 }
 
-//Funcion para limpiar el carrito todo 
+//Funcion para limpiar todo el carrito 
 function clearCart() {
     carrito = {};
     guardarCarritoNoLocalStorage();
