@@ -1,13 +1,13 @@
 function openModal(productoID) {
-    // Cria o background do modal com classes CSS
+    // Crear el background del modal con classes CSS
     const backgroundModal = document.createElement("div");
     backgroundModal.classList.add("modal-background");
 
-    // Cria o conteúdo do modal
+    // Crear el conteúdo de modal
     const modalContent = document.createElement("div");
     modalContent.classList.add("modal-content", "w-50", "px-3", "d-flex", "flex-col");
 
-    // Adiciona o conteúdo do modal
+    // Adicionar el contenido de modal
     modalContent.innerHTML = `
         <div class="d-flex flex-column justify-content-between align-items-center w-100">
             <div class="d-flex flex-row justify-content-between align-items-center w-100">
@@ -35,20 +35,20 @@ function openModal(productoID) {
         
     `;
 
-    // Adiciona o modal ao fundo
+    // Adiciona un modal al fondo
     backgroundModal.appendChild(modalContent);
     document.body.appendChild(backgroundModal);
 
-    // Mostra o modal com a classe "show"
+    // Mostrar el modal con la classe "show"
     setTimeout(() => backgroundModal.classList.add("show"), 10);
 
-    // Fecha o modal ao clicar no botão de fechamento
+    // Fecha y modal al clicar el boton de fecha
     document.getElementById("closeModal").addEventListener("click", () => {
         backgroundModal.classList.remove("show");
         setTimeout(() => document.body.removeChild(backgroundModal), 300);
     });
 
-    // Busca o produto usando a lista global
+    // Buscar un produto usando la lista global
     const producto = productosGlobal.find(p => p.id === productoID);
 
     if (producto) {
@@ -70,7 +70,7 @@ function openModal(productoID) {
         });
 
 
-        // Cria una tabla de caracteristicas
+        // Crear una tabla de caracteristicas
         if (producto.features) {
             const caracteristicasTabla = document.createElement("table");
             caracteristicasTabla.classList.add("table", "table-striped", "text-white");
