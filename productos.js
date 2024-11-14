@@ -1,4 +1,4 @@
-// Variável global para armazenar produtos
+// Variables global para  produtos
 let productosGlobal = [];
 
 // Classe Productos
@@ -15,7 +15,7 @@ class Productos {
         this.features = features;
     }
 
-    // Método para converter o produto em um card HTML
+    // Método para convertir un produto en un card HTML
     toHTML() {
         return `
             <div class="col-12 col-md-6 col-lg-4" data-categoria="${this.categoria}">
@@ -37,29 +37,29 @@ class Productos {
         `;
     }
 
-    // Método estático para carregar os produtos do JSON e renderizá-los no catálogo
+    // Método estático para cargar los produtos do JSON y renderizárlos en catálogo
     static renderCatalog(catalogoId, filtrarCategorias = "all", ordenarPorPrecio = null) {
         fetch('productos.json')
             .then(response => response.json())
             .then(data => {
-                productosGlobal = data; // Armazena os produtos na variável global
+                productosGlobal = data; // los produtos na variable global
                 let productosFiltrados = data;
 
-                // Filtragem de categoria
+                // Filtro de categoria
                 if (filtrarCategorias && filtrarCategorias !== "all") {
                     productosFiltrados = data.filter(producto => producto.categoria === filtrarCategorias);
                 } 
                 
-                // Filtragem por preço
+                // Filtro por precio
                 if (ordenarPorPrecio === "maxValor") {
                     productosFiltrados = data.sort((a, b) => b.price - a.price);
                 } else if (ordenarPorPrecio === "minValor") {
                     productosFiltrados = data.sort((a, b) => a.price - b.price);
                 }
 
-                // Renderizar os produtos filtrados
+                // Renderizar los produtos filtrados
                 const catalogo = document.getElementById(catalogoId);
-                catalogo.innerHTML = ''; // Limpa o conteúdo
+                catalogo.innerHTML = ''; // Limpiar o contenido
 
                 productosFiltrados.forEach(item => {
                     const producto = new Productos(
@@ -75,11 +75,11 @@ class Productos {
                     catalogo.innerHTML += producto.toHTML();
                 });
 
-                // Mostrar somente os produtos da categoria selecionada
+                // Mostrar solamente los produtos da categorias selecionadas
                 const allProducts = document.querySelectorAll(`#${catalogoId} .col-12`);
                 allProducts.forEach(product => {
                     if (filtrarCategorias === null || filtrarCategorias === "all" || product.getAttribute("data-categoria") === filtrarCategorias) {
-                        product.style.display = "block"; // Exibir
+                        product.style.display = "block"; // Exhibir
                     } else {
                         product.style.display = "none"; // Ocultar
                     }
@@ -89,12 +89,12 @@ class Productos {
     }
 }
 
-// Carga e representação do catálogo ao carregar a página
+// Carga y representar el catálogo al carregar la página
 document.addEventListener('DOMContentLoaded', () => {
     Productos.renderCatalog('catalogo');
 });
 
-// Evento para selecionar a categoria e filtrar os produtos
+// Evento para selecionar a categoria e filtrar los produtos
 document.getElementById("categoria").addEventListener("change", (event) => {
     const categoriaSeleccionada = event.target.value;
     if (categoriaSeleccionada === "maxValor" || categoriaSeleccionada === "minValor") {
