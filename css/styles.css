@@ -39,7 +39,7 @@ a, li{
 
 .hidden {
     opacity: 0;
-    transform: translateY(50px); /* Para mover os elementos para baixo */
+    transform: translateY(50px); /* Para mover los elementos hacia abajo */
 }
 
 
