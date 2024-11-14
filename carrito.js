@@ -1,4 +1,4 @@
-// Variável para armazenar los productos en carrito
+// Variable para  los productos en carrito
 let carrito = {};
 
 // Funcion para cargar el carrito del localStorange
@@ -55,7 +55,7 @@ function closeCarrito() {
     }
 }
 
-//Funcion para renderizar los item de carrito 
+//Funcion para renderizar los items de carrito 
 function renderCartModal() {
     const carritoContainer = document.getElementById("cartItemsContainer");
     if (carritoContainer) {
@@ -95,7 +95,7 @@ function renderCartModal() {
             carritoContainer.appendChild(carritoItem);
         }
 
-        // Adiciona la cantidade total de itens y el valor total
+        // Adiciona la cantida de total de items y el valor total
         const totalContainer = document.createElement("div");
         totalContainer.className = "total-info d-flex justify-content-between mt-3";
         
@@ -136,19 +136,19 @@ function checkoutItem(productId) {
     const producto = productosGlobal.find(p => p.id === productId);
     if (!producto) return;
 
-    // Verifica se ainda há estoque disponível
+    // Verificar stock disponible
     if (carrito[productId].cantidad < producto.stock) {
-        carrito[productId].cantidad++;  // Aumenta a quantidade no carrinho
-        producto.stock--;  // Reduz o estoque do produto
+        carrito[productId].cantidad++;  // Aumenta la cantidad en el carrito
+        producto.stock--;  // Reducir el stock de productos
     } else {
         alert("Estoque insuficiente!");
     }
 
-    guardarCarritoNoLocalStorage();  // Salva as mudanças no localStorage
-    renderCartModal();  // Re-renderiza o modal para atualizar os valores
+    guardarCarritoNoLocalStorage();  // Salva los cambio en localStorage
+    renderCartModal();  // Re-renderiza el modal para atualizar los valores
 }
 
-// Funcion para remover la cantidad de item
+// Funcion para remover la cantidad de items
 function removeFromCart(productId) {
     const item = carrito[productId];
     
@@ -164,7 +164,7 @@ function removeFromCart(productId) {
     renderCartModal();
 }
 
-//Funcion para limpiar el carrito todo 
+//Funcion para limpiar todo el carrito 
 function clearCart() {
     carrito = {};
     guardarCarritoNoLocalStorage();
